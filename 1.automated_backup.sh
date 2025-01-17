@@ -30,3 +30,21 @@ fi
 
 # 3. Error Handling
 # The if [ $? -eq 0 ] checks if the tar command was successful ($?) is the exit code of the last command). If successful, it prints a success message; otherwise, it prints an error message.
+
+# Automating the backup with cron
+# Edit the crontab file to schedule the script
+# crontab -e
+# Add a cron job
+# 0 2 * * * /path/to/filename
+
+# Other advanced features
+
+# 1. Email notifications
+# if [ $? -eq 0 ]; then
+#	echo "Backup successful!" | mail -s "Backup Report" user@example.com
+# else
+# 	echo "Backup failed!" | mail -s "Backup Report" user@example.com
+# fi
+
+# 2. Backup Retention - After running the backup for a while, you might want to delete older backups automatically. 
+# find "$DEST_DIR" -type f -name "*.tar.gz" -mtime +7 -exec rm {} \;
